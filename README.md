@@ -1,4 +1,3 @@
 # bilverkstad
 
-Skoluppgift (grupp || singular) 
-Påbörjar den självständigt så får vi se sen. 
+Skoluppgift i grupp med fokus på backend.
