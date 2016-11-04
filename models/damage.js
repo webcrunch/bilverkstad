@@ -5,12 +5,12 @@ var populatePosts = require('./../population/mongoPop').populatePosts;
 var Schema = m.mongoose.Schema({
   description: {type: String, required: true},
   spareParts: [{
-	type: mongoose.Schema.Types.ObjectId,
+	type: m.mongoose.Schema.Types.ObjectId,
 	ref: 'sparePart',
 	required: true
   }],
   employees: [{
-	type: mongoose.Schema.Types.ObjectId,
+	type: m.mongoose.Schema.Types.ObjectId,
 	ref: 'employee',
 	required: true
   }],

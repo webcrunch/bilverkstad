@@ -6,12 +6,12 @@ var Schema = m.mongoose.Schema({
   reg_num: {type: String, required: true},
   model: {type: String, required: true},
   customer: {
-	type: mongoose.Schema.Types.ObjectId,
+	type: m.mongoose.Schema.Types.ObjectId,
 	ref: 'customer',
 	required: true
   },
   damages: [{
-	type: mongoose.Schema.Types.ObjectId,
+	type: m.mongoose.Schema.Types.ObjectId,
 	ref: 'damage',
 	required: true
   }],
