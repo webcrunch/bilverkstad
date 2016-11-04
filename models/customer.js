@@ -4,7 +4,7 @@ var Schema = m.mongoose.Schema({
 	fName: {type: String, required: true},
 	lName: {type: String, required: true},
 	address: {title: String, required: true},
-	email: {title: [], required: false}
+	email: {title: String, required: true}
 });
 
-module.exports = m.mongoose.model("Customer", Schema);
+module.exports = m.mongoose.model("customer", Schema);
