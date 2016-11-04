@@ -26,21 +26,21 @@ g = {}; // all global variables (ex. settings)
 console.log("All loaded modules", Object.keys(m));
 
 // // constructs g.settings object
-// m.settingsConstr();
+m.settingsConstr();
 
 // // loads all classes
-// m.classLoader();
+m.classLoader();
 
 // console.log("All loaded classes", Object.keys(g.classes));
 
 // // connect to DB
-// new g.classes.DB();
+new g.classes.DB();
 
 // // start LessWatch
 // new g.classes.LessWatch();
 
 // // start express server
-// new g.classes.Server();
+new g.classes.Server();
 
 
 // /*
