@@ -7,5 +7,5 @@ var Schema = m.mongoose.Schema({
   status: {type: String, required: true}, 
 });
 
-module.exports = m.mongoose.model("repairsCars", Schema);
+module.exports = m.mongoose.model("RepairsCars", Schema);
 
