@@ -21,6 +21,9 @@ module.exports = function() {
       host: '127.0.0.1',
       db: 'bilverkstadDB',
       modelDir: m.path.join(appRoot,'models/')
+    },
+    REST : {
+      route : '/rest/:model/:modelID?'
     }
   };
 };
