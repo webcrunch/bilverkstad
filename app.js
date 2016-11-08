@@ -42,7 +42,6 @@ new g.classes.DB();
 // // start express server
 new g.classes.Server();
 
-
 // /*
 //   If we didnt have a class loader
 
@@ -50,3 +49,5 @@ new g.classes.Server();
 
 //   new Server();
 // */
+
+new g.classes.DummyGenerator(m.express, 10);

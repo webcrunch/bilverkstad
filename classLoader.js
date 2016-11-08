@@ -5,4 +5,5 @@ module.exports = function() {
   settings.toLoad.forEach(function(c) {
     g.classes[c] = require(m.path.join(settings.baseDir, c+'.class.js'));
   });
+  console.log('classes loaded', g.classes);
 };

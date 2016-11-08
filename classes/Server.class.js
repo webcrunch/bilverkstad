@@ -32,6 +32,8 @@ module.exports = class Server {
     // for example from "standard" HTML forms
     this.app.use(m.bodyparser.urlencoded({extended: false}));
 
+    new g.classes.REST(this.app);   
+
     // create an endpoint ("*")
     var me = this;
     this.app.get(this.settings.endpoint, function(req, res) {

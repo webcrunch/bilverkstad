@@ -5,14 +5,14 @@ module.exports = class REST {
     this.settings = s.REST;
     this.DB = new g.classes.DB(); // DB connection & models
     this.app = express;
-
     this.router();
   }
 
   // setup standard CRUD for route
   router() {
     var me = this;
-    this.app.all(this.settings.route, function(req, res) { 
+    this.app.all(this.settings.route, function(req, res) {
+      
       var model = me.DB.getModel(req.params.model);
       // do we have a 404?
       if (!me[req.method] || !model) {
@@ -48,6 +48,7 @@ module.exports = class REST {
 
   // READ
   GET(model, params, req, res) {
+
     // pick a mongoose query function and parameters for it
     var me = this,
         func = params.modelID ? 'findById' : 'find',
