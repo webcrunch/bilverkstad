@@ -1,3 +1,4 @@
+
 // constructs g.settings object
 module.exports = function() {
   var appRoot = m.path.normalize(__dirname +'/');
