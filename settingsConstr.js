@@ -8,7 +8,8 @@ module.exports = function() {
       baseDir: m.path.join(appRoot,'classes/'),
       toLoad: [
         'Server',
-        'DB'
+        'DB',
+        'REST'
       ]
     },
     Server: {
