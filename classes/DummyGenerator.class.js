@@ -12,34 +12,36 @@ module.exports = class DummyGenerator {
 		this.app = express;
 		this.DB = new g.classes.DB();
 		this.models = {
-			customer: this.DB.getModel('customer'),
+			customer: [this.DB.getModel('customer'), this.generateCustomer],
 			damage: this.DB.getModel('damage'),
 			employee: this.DB.getModel('employee'),
 			repairsCar: this.DB.getModel('repairsCar'),
 			sparePart: this.DB.getModel('sparePart')
 		};
 
-		this.fNames = ['Kalle', 'Mayra', 'Jarl', 'Martin', 'Patricio', 'Faj', 'Hugo', 'Anna'];
-		this.lNames = ['Nilsson', 'Rivas', 'Andersson', 'Vengara', 'Smith', 'Gravestam'];
+		this.fNames = ['Kalle', 'Mayra', 'Jarl', 'Martin', 'Patricio', 'Faj', 'Hugo', 'Anna', 'Pernilla', 'Åke', 'Donald'];
+		this.lNames = ['Nilsson', 'Rivas', 'Andersson', 'Vengara', 'Smith', 'Gravestam', 'Trump', 'Kvarg'];
 		this.mailEndings = ['@gmail.com', '@hotmail.com', '@telia.se', '@usa.gov'];
-		this.addresses = ['amiralsgatan 14B', 'nevisborg 20D', 'storgatan 15', 'tenorgränd 18'];
+		this.addresses = ['amiralsgatan 14B', 'nevisborg 20D', 'storgatan 15', 'tenorgränd 18', 'hörnet 22', 'bilgatan 50', 'ön 4'];
+		this.titles = ['Senior Mechanic', 'Junior Mechanic', 'Salesman', 'Manager'];
+		this.vacations = ['11-02-2017', '30-4-2017', '1-1-2020', '']
 
-		this.generateAll();
+		this.generate();
 	}
 
-	generateAll() {
+	generate() {
 
 		var me = this;
 
 		this.app.post(this.settings.route, function (req, res) {
-
+			console.log(req.params);
 			var count = 0;
 			var doneCount = 0;
-			for (var i = 1; i < 10 + 1; i++) {
+			for (var i = 1; i < 50 + 1; i++) {
 
 				count += 1;
-				var params = me.genCustomer(i);
-				var toSave = new me.models.customer(params);
+				var params = me.generateCustomer(i);
+				var toSave = new me.models[req.params.model][0](params);
 
 				toSave.save(function (err, result) {
 					
@@ -61,21 +63,21 @@ module.exports = class DummyGenerator {
 		return arr[Math.floor(Math.random()*arr.length)];
 	}
 
-	genCustomer(SSN) {
+	getFormatedSSN(SSN) {
+
+		var out = SSN + '';
+		var length = 7;
+
+		for (var i = 0; i < length - (SSN + '').length; i++) {
+			out = '0' + out;
+		}
+
+		return out;
+	}
+
+	generateCustomer(SSN) {
 		
-		var createSSN = function() {
-
-			var out = SSN + '';
-			var length = 7;
-
-			for (var i = 0; i < length - (SSN + '').length; i++) {
-				out = '0' + out;
-			}
-
-			return out;
-		};
-
-		var _SSN = createSSN(SSN);
+		var _SSN = this.getFormatedSSN(SSN);
 		var _fName = this.getRandomItem(this.fNames);
 		var _lName = this.getRandomItem(this.lNames);
 		var _address = this.getRandomItem(this.addresses);
@@ -92,19 +94,34 @@ module.exports = class DummyGenerator {
 		return out;
 	}
 
-	genDamage() {
+	generateDamage() {
 
 	}
 
-	genEmployee() {
+	generateEmployee(SSN) {
+
+		var _SSN = this.getFormatedSSN(SSN);
+		var _fName = this.getRandomItem(this.fNames);
+		var _lName = this.getRandomItem(this.lNames);
+		var _title = this.getRandomItem(this.titles);
+		var _vacation = this.getRandomItem(this.vacations);
+
+		var out = {
+			"SSN": _SSN,
+			"fName": _fName,
+			"lName": _lName,
+			"title": _title,
+			"vacation": _vacation
+		};
+
+		return out;
+	}
+
+	generateRepairsCar() {
 
 	}
 
-	genRepairsCar() {
-
-	}
-
-	genSparePart() {
+	generateSparePart() {
 
 	}
 }

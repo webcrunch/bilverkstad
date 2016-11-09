@@ -5,8 +5,7 @@ var Schema = m.mongoose.Schema({
 	lName: {type: String, required: true},
 	title: {type: String, required: true},
 	vacation: [
-		{type: Date, required: false},
-		{type: Date, required: false}
+		{type: String, required: false}
 	]
 });
 
