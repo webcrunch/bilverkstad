@@ -27,6 +27,9 @@ module.exports = function() {
     },
     REST : {
       route : '/rest/:model/:modelID?'
+    },
+    DummyGenerator: {
+      route: '/rest/generate/:model'
     }
   };
 };

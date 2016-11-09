@@ -49,5 +49,3 @@ new g.classes.Server();
 
 //   new Server();
 // */
-
-new g.classes.DummyGenerator(m.express, 10);

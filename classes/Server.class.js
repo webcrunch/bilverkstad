@@ -32,6 +32,9 @@ module.exports = class Server {
     // for example from "standard" HTML forms
     this.app.use(m.bodyparser.urlencoded({extended: false}));
 
+
+    new g.classes.DummyGenerator(this.app);
+
     new g.classes.REST(this.app);   
 
     // create an endpoint ("*")
