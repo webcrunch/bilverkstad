@@ -11,6 +11,7 @@ module.exports = function() {
         'Server',
         'DB',
         'REST',
+        'Login',
         'DummyGenerator'
       ]
     },
@@ -27,6 +28,9 @@ module.exports = function() {
     },
     REST : {
       route : '/rest/:model/:modelID?'
+    },
+    Login: {
+      route: '/rest/login'
     },
     DummyGenerator: {
       route: '/rest/generate/:model'
