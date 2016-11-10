@@ -22,7 +22,7 @@ module.exports = class REST {
       }
 
       // how to check if not logged in
-      //if (!req.session.loggedIn) { /*...*/ }
+      if (!req.session.loggedIn) { /*...*/ }
 
       // combine any data sent in the request body with
       // any data sent in the request URL

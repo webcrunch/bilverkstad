@@ -13,6 +13,9 @@ module.exports = class Server {
   }
 
   setup() {
+    // compress all files using gzip
+    this.app.use(m.compression());
+    
     // tell express to use middleware to parse JSON
     this.app.use(m.bodyparser.json());
     // declare a webroot
@@ -21,6 +24,13 @@ module.exports = class Server {
         m.path.join(g.settings.appRoot, this.settings.webroot)
       )
     );
+
+    // use session middleware
+    this.app.use(m.expresssession({
+      secret: 'SUW15-secret',
+      resave: false,
+      saveUninitialized: true
+    }));
 
     // compress all files using gzip
     this.app.use(m.compression());
@@ -32,8 +42,10 @@ module.exports = class Server {
     // for example from "standard" HTML forms
     this.app.use(m.bodyparser.urlencoded({extended: false}));
 
-
     new g.classes.DummyGenerator(this.app);
+
+    // Start Login api
+    new g.classes.Login(this.app);
 
     new g.classes.REST(this.app);   
 
