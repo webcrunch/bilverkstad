@@ -39,14 +39,19 @@ module.exports = class REST {
 
   // CREATE
   POST(model, params, req, res) {
-    var me = this,
-        toSave = new model(params); // new model instance with data
+    
+    if (!req.session.loggedIn){
+      this.error({error: 'Login needed!'}, res); return;
+    }
+    else
+      var me = this,
+          toSave = new model(params); // new model instance with data
 
-    // write data to DB
-    toSave.save(function(err, result) {
-      if (err) { me.error(err, res); return; }
-      res.json(result); // respond with result
-    });
+      // write data to DB
+      toSave.save(function(err, result) {
+        if (err) { me.error(err, res); return; }
+        res.json(result); // respond with result
+      });
   }
 
   // READ
@@ -66,24 +71,32 @@ module.exports = class REST {
 
   // UPDATE
   PUT(model, params, req, res) {
-    if (!params.modelID) { this.error({error: 'Missing ID!'}, res); return; }
+    if (!req.session.loggedIn){
+      this.error({error: 'Login needed!'}, res); return;
+    }
+    else if (!params.modelID) { this.error({error: 'Missing ID!'}, res); return; }
 
-    var me = this;
-    model.findByIdAndUpdate(params.modelID, params, {new: true}, function (err, result) {
-      if (err) { me.error(err, res); return; }
-      res.json(result); // respond with result
-    });
+    else
+      var me = this;
+      model.findByIdAndUpdate(params.modelID, params, {new: true}, function (err, result) {
+        if (err) { me.error(err, res); return; }
+        res.json(result); // respond with result
+      });
   }
 
   // DELETE
   DELETE(model, params, req, res) {
-    if (!params.modelID) { this.error({error: 'Missing ID!'}, res); return; }
+    if (!req.session.loggedIn){
+      this.error({error: 'Login needed!'}, res); return;
+    }
+    else if (!params.modelID) { this.error({error: 'Missing ID!'}, res); return; }
 
-    var me = this;
-    model.findByIdAndRemove(params.modelID, function(err, result) {
-      if (err) { me.error(err, res); return; }
-      res.json(true); // respond with result
-    });
+    else
+      var me = this;
+      model.findByIdAndRemove(params.modelID, function(err, result) {
+        if (err) { me.error(err, res); return; }
+        res.json(true); // respond with result
+      });
   }
 
   error(err, res) {
