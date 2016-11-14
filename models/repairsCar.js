@@ -4,7 +4,7 @@ var populatePosts = require('./../population/mongoPop').populatePosts;
 // Create a new mongoose schema damages
 var Schema = m.mongoose.Schema({
   reg_num: {type: String, required: true},
-  model: {type: String, required: true},
+  modellName: {type: String, required: true},
   customer: {
 	type: m.mongoose.Schema.Types.ObjectId,
 	ref: 'customer',
