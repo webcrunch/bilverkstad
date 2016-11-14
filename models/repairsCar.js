@@ -5,7 +5,7 @@ var populatePosts = require('./../population/mongoPop').populatePosts;
 var Schema = m.mongoose.Schema({
   reg_num: {type: String, required: true},
   modellName: {type: String, required: true},
-  customer: {
+  customers: {
 	type: m.mongoose.Schema.Types.ObjectId,
 	ref: 'customer',
 	required: true
