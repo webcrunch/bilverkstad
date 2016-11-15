@@ -14,7 +14,7 @@ module.exports = class DummyGenerator {
 		this.models = {
 			customer: [this.DB.getModel('customer'), this.generateCustomer],
 			damage: this.DB.getModel('damage'),
-			employee: this.DB.getModel('employee'),
+			employee: [this.DB.getModel('employee'), this.generateEmployee],
 			repairsCar: this.DB.getModel('repairsCar'),
 			sparePart: this.DB.getModel('sparePart')
 		};
@@ -24,7 +24,7 @@ module.exports = class DummyGenerator {
 		this.mailEndings = ['@gmail.com', '@hotmail.com', '@telia.se', '@usa.gov'];
 		this.addresses = ['amiralsgatan 14B', 'nevisborg 20D', 'storgatan 15', 'tenorgränd 18', 'hörnet 22', 'bilgatan 50', 'ön 4'];
 		this.titles = ['Senior Mechanic', 'Junior Mechanic', 'Salesman', 'Manager'];
-		this.vacations = ['11-02-2017', '30-4-2017', '1-1-2020', '']
+		this.vacations = ['11-02-2017', '30-4-2017', '1-1-2020']
 
 		this.generate();
 	}
@@ -40,7 +40,8 @@ module.exports = class DummyGenerator {
 			for (var i = 1; i < 50 + 1; i++) {
 
 				count += 1;
-				var params = me.generateCustomer(i);
+				var func = me.models[req.params.model][1];
+				var params = func(i, me);
 				var toSave = new me.models[req.params.model][0](params);
 
 				toSave.save(function (err, result) {
@@ -50,7 +51,7 @@ module.exports = class DummyGenerator {
 					doneCount += 1;
 
 					if(count === doneCount) {
-
+						console.log('im here');
 						res.json(result);
 					}
 				});
@@ -75,13 +76,12 @@ module.exports = class DummyGenerator {
 		return out;
 	}
 
-	generateCustomer(SSN) {
-		
-		var _SSN = this.getFormatedSSN(SSN);
-		var _fName = this.getRandomItem(this.fNames);
-		var _lName = this.getRandomItem(this.lNames);
-		var _address = this.getRandomItem(this.addresses);
-		var _email = _fName.toLowerCase() + _lName.toLowerCase() + this.getRandomItem(this.mailEndings);
+	generateCustomer(SSN, context) {
+		var _SSN = context.getFormatedSSN(SSN);
+		var _fName = context.getRandomItem(context.fNames);
+		var _lName = context.getRandomItem(context.lNames);
+		var _address = context.getRandomItem(context.addresses);
+		var _email = _fName.toLowerCase() + _lName.toLowerCase() + context.getRandomItem(context.mailEndings);
 
 		var out = {
 			"SSN": _SSN,
@@ -98,13 +98,12 @@ module.exports = class DummyGenerator {
 
 	}
 
-	generateEmployee(SSN) {
-
-		var _SSN = this.getFormatedSSN(SSN);
-		var _fName = this.getRandomItem(this.fNames);
-		var _lName = this.getRandomItem(this.lNames);
-		var _title = this.getRandomItem(this.titles);
-		var _vacation = this.getRandomItem(this.vacations);
+	generateEmployee(SSN, context) {
+		var _SSN = context.getFormatedSSN(SSN);
+		var _fName = context.getRandomItem(context.fNames);
+		var _lName = context.getRandomItem(context.lNames);
+		var _title = context.getRandomItem(context.titles);
+		var _vacation = context.getRandomItem(context.vacations);
 
 		var out = {
 			"SSN": _SSN,
