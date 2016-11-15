@@ -49,7 +49,7 @@ module.exports = class Login {
         req.session.loggedIn = result._id;
       }
 
-      // just answer something, without giving anything away
+     // just answer something, without giving anything away
       res.json(true);
     });
   }

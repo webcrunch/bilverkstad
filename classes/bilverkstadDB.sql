@@ -26,14 +26,6 @@ SET time_zone = "+00:00";
 -- Tabellstruktur `Customers`
 --
 
-CREATE TABLE `Customers` (
-  `SSN` varchar(10) NOT NULL,
-  `fName` varchar(50) DEFAULT NULL,
-  `lName` varchar(50) DEFAULT NULL,
-  `address` varchar(80) DEFAULT NULL,
-  `email` varchar(30) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 --
 -- Dumpning av Data i tabell `Customers`
 --s

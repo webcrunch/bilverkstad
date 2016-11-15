@@ -27,8 +27,16 @@ module.exports = class SQL {
 				console.log("Error connection to db- function");
 				console.log(err);
 			}
-			console.log("Upp and running ");
+			console.log("Mysql connected to bilverkstadDB");
 		});
+
+	}
+
+	getTable(table){
+		this.connection.query('SELECT * FROM ' + table ), (err,rows) => {
+			if (err) { return false; }
+			return true;
+		}
 
 	}
 
