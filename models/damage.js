@@ -15,7 +15,7 @@ var Schema = m.mongoose.Schema({
 	required: true
   }],
   hours: {type: Number, required: true},
-  status: {type: String, required: true}, 
+  status: {type: String, required: true}
 });
 
 Schema.post('find', function(docs, next) {
