@@ -6,7 +6,9 @@ var Schema = m.mongoose.Schema({
 	fName: {type: String, required: true},
 	lName: {type: String, required: true},
 	title: {type: String, required: true},
-	vacation: {type: String, required: false}
+	vacation: [
+		{type: String, required: false}
+	]
 });
 
 module.exports = m.mongoose.model("employee", Schema);

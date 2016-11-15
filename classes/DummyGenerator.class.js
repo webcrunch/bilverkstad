@@ -24,7 +24,8 @@ module.exports = class DummyGenerator {
 		this.mailEndings = ['@gmail.com', '@hotmail.com', '@telia.se', '@usa.gov'];
 		this.addresses = ['amiralsgatan 14B', 'nevisborg 20D', 'storgatan 15', 'tenorgränd 18', 'hörnet 22', 'bilgatan 50', 'ön 4'];
 		this.titles = ['Senior Mechanic', 'Junior Mechanic', 'Salesman', 'Manager'];
-		this.vacations = ['11-02-2017', '30-4-2017', '1-1-2020']
+		this.vacations = ['11-02-2017', '30-4-2017', '1-1-2020'];
+		this.passwords = ['abc123', 'mellon', 'qwerty', 'password', '1qaz2wsx'];
 
 		this.generate();
 	}
@@ -102,15 +103,19 @@ module.exports = class DummyGenerator {
 		var _SSN = context.getFormatedSSN(SSN);
 		var _fName = context.getRandomItem(context.fNames);
 		var _lName = context.getRandomItem(context.lNames);
+		var _email = _fName.toLowerCase() + _lName.toLowerCase() + context.getRandomItem(context.mailEndings);
 		var _title = context.getRandomItem(context.titles);
 		var _vacation = context.getRandomItem(context.vacations);
+		var _pass = context.getRandomItem(context.passwords);
 
 		var out = {
 			"SSN": _SSN,
+			"email": _email,
 			"fName": _fName,
 			"lName": _lName,
 			"title": _title,
-			"vacation": _vacation
+			"vacation": [_vacation],
+			"pass": _pass
 		};
 
 		return out;
