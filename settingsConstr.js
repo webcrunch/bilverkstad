@@ -38,7 +38,7 @@ module.exports = function() {
     REST : {
       route : '/rest/:model/:modelID?'
     },
-    Vilketnamnsomhelst : {
+    REST2 : {
       route : '/sql/:table/:tablelID?'
     }, 
     Holiday:{
