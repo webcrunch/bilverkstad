@@ -11,6 +11,7 @@ module.exports = function() {
         'Server',
         'DB',
         'REST',
+        'REST2',
         'SQL',
         'Login',
         'DummyGenerator'
@@ -36,9 +37,9 @@ module.exports = function() {
     REST : {
       route : '/rest/:model/:modelID?'
     },
-    Vilketnamnsomhelst : {
+    REST2 : {
       route : '/sql/:table/:tablelID?'
-    },
+    },    
     Login: {
       route: '/rest/login'
     },
