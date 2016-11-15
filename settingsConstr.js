@@ -40,8 +40,7 @@ module.exports = function() {
     },
     Vilketnamnsomhelst : {
       route : '/sql/:table/:tablelID?'
-    },
-    },  
+    }, 
     Holiday:{
       route: '/rest/holiday/:block?'
     },

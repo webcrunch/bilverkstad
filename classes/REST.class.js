@@ -58,16 +58,25 @@ module.exports = class REST {
   // READ
   GET(model, params, req, res) {
 
-    // pick a mongoose query function and parameters for it
-    var me = this,
-        func = params.modelID ? 'findById' : 'find',
-        q = params.modelID ? params.modelID : {};
+    if (req.params.model == 'repairsCar' && params.modelID == "active") {
+      model['find']({status: "pågående"}, function(err, result){
+        if (err) { me.error(err, res); return; }
+        res.json(result); // respond with result
+      });
+    }
+    else{
+      // pick a mongoose query function and parameters for it
+      var me = this,
+          func = params.modelID ? 'findById' : 'find',
+          q = params.modelID ? params.modelID : {};
 
-    // call the query function (find || findById)
-    model[func](q, function(err, result) {
-      if (err) { me.error(err, res); return; }
-      res.json(result); // respond with result
-    });
+      // call the query function (find || findById)
+      model[func](q, function(err, result) {
+        if (err) { me.error(err, res); return; }
+        res.json(result); // respond with result
+      });
+    }
+
   }
 
   // UPDATE
