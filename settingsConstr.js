@@ -26,8 +26,17 @@ module.exports = function() {
       db: 'bilverkstadDB',
       modelDir: m.path.join(appRoot,'models/')
     },
+    SQL:{
+      host: "127.0.0.1",
+      user: "root",
+      database: "bilverkstadDB",
+      password: ""
+    },
     REST : {
       route : '/rest/:model/:modelID?'
+    },
+    Vilketnamnsomhelst : {
+      route : '/sql/:table/:tablelID?'
     },
     Login: {
       route: '/rest/login'
