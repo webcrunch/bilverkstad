@@ -42,7 +42,7 @@ module.exports = function() {
       route : '/sql/:table/:tablelID?'
     },  
     Holiday:{
-      route: '/rest/holiday/:block'
+      route: '/rest/holiday/:block?'
     },  
     Login: {
       route: '/rest/login'
