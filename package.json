@@ -12,6 +12,7 @@
     "gulp-clean-css": "*",
     "gulp-less": "*",
     "mongoose": "*",
+    "mysql": "^2.12.0",
     "serve-favicon": "*"
   }
 }

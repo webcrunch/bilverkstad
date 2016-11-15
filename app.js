@@ -14,6 +14,7 @@ g = {}; // all global variables (ex. settings)
   "body-parser",
   "gulp",
   "gulp-less",
+  "mysql",
   "gulp-clean-css",
   "mongoose",
   "./settingsConstr",

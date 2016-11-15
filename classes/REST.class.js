@@ -4,6 +4,7 @@ module.exports = class REST {
   constructor(express) {
     this.settings = s.REST;
     this.DB = new g.classes.DB(); // DB connection & models
+    this.sql = new g.classes.SQL(); // DB connection
     this.app = express;
     this.router();
   }

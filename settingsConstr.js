@@ -11,6 +11,7 @@ module.exports = function() {
         'Server',
         'DB',
         'REST',
+        'SQL',
         'Login',
         'DummyGenerator'
       ]
@@ -28,7 +29,7 @@ module.exports = function() {
     },
     SQL:{
       host: "127.0.0.1",
-      user: "root",
+      user : "root",
       database: "bilverkstadDB",
       password: ""
     },
