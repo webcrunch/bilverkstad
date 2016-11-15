@@ -36,7 +36,7 @@ CREATE TABLE `Customers` (
 
 --
 -- Dumpning av Data i tabell `Customers`
---
+--s
 
 INSERT INTO `Customers` (`SSN`, `fName`, `lName`, `address`, `email`) VALUES
 ('1', 'Kalle', 'Nilsson', 'amiralsgatan 14B', 'andersson@bilverkstad.se'),
