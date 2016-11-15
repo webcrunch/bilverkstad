@@ -66,9 +66,7 @@ module.exports = class Login {
   DELETE(req, res) {
     // we don't need the database here!
     // we have a session variable
-
     delete req.session.loggedIn;
-
     res.json(true);
   }
 }
