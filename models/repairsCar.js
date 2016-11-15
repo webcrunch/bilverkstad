@@ -18,8 +18,8 @@ var Schema = m.mongoose.Schema({
   status: {type: String, required: true} 
 });
 
-Schema.get('find', function(docs, next) {
-  populatePosts(docs, 'customer damage', next);
+Schema.post('find', function(docs, next) {
+  populatePosts(docs, 'customer damages', next);
 });
 
 module.exports = m.mongoose.model("repairsCar", Schema);

@@ -15,7 +15,8 @@ module.exports = function() {
         'SQL',
         'Holiday',
         'Login',
-        'DummyGenerator'
+        'DummyGenerator',
+        'MyQuery'
       ]
     },
     Server: {
@@ -49,6 +50,9 @@ module.exports = function() {
     },
     DummyGenerator: {
       route: '/rest/generate/:model'
+    },
+    MyQuery : {
+      route : '/rest/:model/:modelID?'
     }
   };
 };

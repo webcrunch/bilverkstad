@@ -44,7 +44,7 @@ module.exports = class REST {
     if (!req.session.loggedIn){
       this.error({error: 'Login needed!'}, res); return;
     }
-    else
+    else{
       var me = this,
           toSave = new model(params); // new model instance with data
 
@@ -53,29 +53,22 @@ module.exports = class REST {
         if (err) { me.error(err, res); return; }
         res.json(result); // respond with result
       });
+    }  
   }
 
   // READ
   GET(model, params, req, res) {
 
-    if (req.params.model == 'repairsCar' && params.modelID == "active") {
-      model['find']({status: "pågående"}, function(err, result){
-        if (err) { me.error(err, res); return; }
-        res.json(result); // respond with result
-      });
-    }
-    else{
-      // pick a mongoose query function and parameters for it
-      var me = this,
-          func = params.modelID ? 'findById' : 'find',
-          q = params.modelID ? params.modelID : {};
+    // pick a mongoose query function and parameters for it
+    var me = this,
+        func = params.modelID ? 'findById' : 'find',
+        q = params.modelID ? params.modelID : {};
 
-      // call the query function (find || findById)
-      model[func](q, function(err, result) {
-        if (err) { me.error(err, res); return; }
-        res.json(result); // respond with result
-      });
-    }
+    // call the query function (find || findById)
+    model[func](q, function(err, result) {
+      if (err) { me.error(err, res); return; }
+      res.json(result); // respond with result
+    });
 
   }
 
@@ -86,12 +79,13 @@ module.exports = class REST {
     }
     else if (!params.modelID) { this.error({error: 'Missing ID!'}, res); return; }
 
-    else
+    else{
       var me = this;
       model.findByIdAndUpdate(params.modelID, params, {new: true}, function (err, result) {
         if (err) { me.error(err, res); return; }
         res.json(result); // respond with result
       });
+    }  
   }
 
   // DELETE
@@ -101,12 +95,13 @@ module.exports = class REST {
     }
     else if (!params.modelID) { this.error({error: 'Missing ID!'}, res); return; }
 
-    else
+    else{
       var me = this;
       model.findByIdAndRemove(params.modelID, function(err, result) {
         if (err) { me.error(err, res); return; }
         res.json(true); // respond with result
       });
+    }  
   }
 
   error(err, res) {
