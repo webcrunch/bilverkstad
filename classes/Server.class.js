@@ -48,8 +48,10 @@ module.exports = class Server {
     new g.classes.Login(this.app);
 
     new g.classes.REST(this.app);   
+
     new g.classes.REST2(this.app);
- 
+   
+    new g.classes.Holiday(this.app);
 
     // create an endpoint ("*")
     var me = this;

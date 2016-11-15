@@ -11,6 +11,9 @@ module.exports = function() {
         'Server',
         'DB',
         'REST',
+        'REST2',
+        'SQL',
+        'Holiday',
         'Login',
         'DummyGenerator'
       ]
@@ -37,6 +40,10 @@ module.exports = function() {
     },
     Vilketnamnsomhelst : {
       route : '/sql/:table/:tablelID?'
+    },
+    },  
+    Holiday:{
+      route: '/rest/holiday/:block?'
     },
     Login: {
       route: '/rest/login'
