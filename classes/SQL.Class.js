@@ -32,7 +32,7 @@ module.exports = class SQL {
 
 	}
 
-	getTable(table){
+	getTable(table,cb){
 		this.connection.query('SELECT * FROM ' + table ), (err,rows) => {
 			if (err) { return false; }
 			return true;

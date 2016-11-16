@@ -7,6 +7,7 @@ module.exports = class REST {
     
     this.app = express;
     this.router();
+  
   }
 
   // setup standard CRUD for route

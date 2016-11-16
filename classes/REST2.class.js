@@ -12,15 +12,18 @@ module.exports = class REST {
   router() {
     var me = this;
     this.app.all(this.settings.route, function(req, res) {
-    
-      
-      // var model = me.DB.getModel(req.params.model); // dont need to but we could check if there is an table in SQL with that name 
-      // // do we have a 404?
-      // if (!me[req.method] || !model) {
-      //   res.sendStatus(404);
-      //   res.end();
-      //   return;
-      // }
+      console.log(req.params.table);
+      var table = me.SQL.getTable(req.params.table); // dont need to but we could check if there is an table in SQL with that name 
+      // do we have a 404?
+      console.log(table);
+      if (!me[req.method] || !table) {
+        res.sendStatus(404);
+        res.end();
+        return;
+      }
+      else {
+        res.json(table);
+      }
 
       // // how to check if not logged in
       // if (!req.session.loggedIn) { /*...*/ }
