@@ -60,16 +60,102 @@ module.exports = class REST {
   // READ
   GET(model, params, req, res) {
 
-    // pick a mongoose query function and parameters for it
-    var me = this,
-        func = params.modelID ? 'findById' : 'find',
-        q = params.modelID ? params.modelID : {};
+    if (req.params.model == 'repairsCar' && params.modelID != "active") { // Show all cars
+      var me = this,
+          func = params.modelID ? 'findById' : 'find',
+          q = params.modelID ? params.modelID : {};
+      model[func](q, function(err, result){
+        if (err) { me.error(err, res); return; }
+        var items = result;
+        var newResult = [];
+        if (items.length) {
+          items.forEach(function(x){
+            var myObj = {};
+            myObj._id = x._id;
+            myObj.reg_num = x.reg_num;
+            myObj.modellName = x.modellName;
+            myObj.customer = x.customer;
+            myObj.damages = x.damages;
+            var timeLeft = 0;
+            x.damages.forEach(function(y){
+              if (y.status != "avslutad") {
+                timeLeft += y.hours;
+              }
+            });
+            myObj.timeLeft = timeLeft + " timmar";
+            myObj.status = x.status;
+            myObj.__v = x.__v;
+            newResult.push(myObj);
+          });
+        }
+        else{
+          var myObj = {};
+          var timeLeft = 0;
+          myObj._id = items._id;
+          myObj.reg_num = items.reg_num;
+          myObj.modellName = items.modellName;
+          myObj.customer = items.customer;
+          myObj.damages = items.damages;
+          var timeLeft = 0;
+          items.damages.forEach(function(y){
+            if (y.status != "avslutad" && y.hours != undefined) {
+              timeLeft += y.hours;
+            }
+          });
+          myObj.timeLeft = timeLeft + " timmar";
+          myObj.status = items.status;
+          myObj.__v = items.__v;
+          newResult.push(myObj);
+        }
+        res.json(newResult);
+      });
+    }
+    else if (req.params.model == 'repairsCar' && params.modelID == "active") { // Show all cars with an active repair
+      var me = this;
+      model['find']({status: "pågående"}, function(err, result){
+        if (err) { me.error(err, res); return; }
+        var items = result;
+        var newResult = [];
+        items.forEach(function(x){
+          var myObj = {};
+          myObj._id = x._id;
+          myObj.reg_num = x.reg_num;
+          myObj.modellName = x.modellName;
+          myObj.customer = x.customer;
+          myObj.damages = x.damages;
+          var timeLeft = 0;
+          x.damages.forEach(function(y){
+            if (y.status != "avslutad") {
+              timeLeft += y.hours;
+            }
+          });
+          myObj.timeLeft = timeLeft + " timmar";
+          myObj.status = x.status;
+          myObj.__v = x.__v;
+          newResult.push(myObj);
+        });
+        res.json(newResult);
+      });
+    }
+    else if (req.params.model == 'employee' && params.modelID == "vacation") { // show all employees in vacation
+      var me = this;
+      model['find']({vacation: {$size: 2}}, function(err, result){
+        if (err) { me.error(err, res); return; }
+        res.json(result); // respond with result
+      });
+    }
+    else{
+      // pick a mongoose query function and parameters for it
+      var me = this,
+          func = params.modelID ? 'findById' : 'find',
+          q = params.modelID ? params.modelID : {};
 
-    // call the query function (find || findById)
-    model[func](q, function(err, result) {
-      if (err) { me.error(err, res); return; }
-      res.json(result); // respond with result
-    });
+      // call the query function (find || findById)
+      model[func](q, function(err, result) {
+        if (err) { me.error(err, res); return; }
+        res.json(result); // respond with result
+      });
+    }
 
   }
 

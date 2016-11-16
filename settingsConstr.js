@@ -13,10 +13,8 @@ module.exports = function() {
         'REST',
         'REST2',
         'SQL',
-
         'Login',
-        'DummyGenerator',
-        'MyQuery'
+        'DummyGenerator'
       ]
     },
     Server: {
@@ -41,16 +39,12 @@ module.exports = function() {
     },
     REST2 : {
       route : '/sql/:table/:tablelID?'
-    }, 
-  
+    },  
     Login: {
       route: '/rest/login'
     },
     DummyGenerator: {
       route: '/rest/generate/:model'
-    },
-    MyQuery : {
-      route : '/rest/queries/:model/:modelID?'
     }
   };
 };
