@@ -33,7 +33,11 @@ module.exports = class SQL {
 	}
 
 	getTable(table,cb){
+		console.log('SELECT * FROM ' + table, "   query");
 		this.connection.query('SELECT * FROM ' + table ), (err,rows) => {
+			console.log(err, "error from sql");
+			console.log(rows, "data from sql");
+
 			if (err) { return false; }
 			return true;
 		}

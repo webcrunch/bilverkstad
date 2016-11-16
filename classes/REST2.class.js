@@ -12,10 +12,10 @@ module.exports = class REST2 {
   router() {
     var me = this;
     this.app.all(this.settings.route, function(req, res) {
-      console.log(req.params.table);
+      console.log(req.params.table, " params input");
       var table = me.SQL.getTable(req.params.table); // dont need to but we could check if there is an table in SQL with that name 
       // do we have a 404?
-      console.log(table);
+      console.log(table, "table console");
       if (!me[req.method] || !table) {
         res.sendStatus(404);
         res.end();
