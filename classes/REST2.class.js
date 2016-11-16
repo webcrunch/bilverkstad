@@ -3,7 +3,7 @@ var s = g.settings;
 module.exports = class REST2 {
   constructor(express) {
     this.settings = s.REST2;
-    this.SQL = new g.classes.SQL(); // DB connection & models
+     this.SQL = new g.classes.SQL(); // DB connection & models
      this.app = express;
     this.router();
   }
@@ -20,32 +20,32 @@ module.exports = class REST2 {
       console.log(table, "table console");
       console.log(req.method);
       if (!me[req.method] || !table) {
-        res.sendStatus(404);
+       res.sendStatus(404);
         res.end();
         return;
       }
-      else {
-        res.json(table);
-      }
 
-
-        });
-      
-      
       // // how to check if not logged in
       // if (!req.session.loggedIn) { /*...*/ }
 
-      // // combine any data sent in the request body with
-      // // any data sent in the request URL
-    //   var params = req.body || {};
-    //   params.model = req.params.model;
+      // combine any data sent in the request body with
+      // any data sent in the request URL
+      
+      var params = req.body || {};
+      
+      params.table = req.params.table;
+      
     //   if (req.params.modelID) {
     //     params.modelID = req.params.modelID;
     //   }
 
-    //   // and call the appropriate method
-    //   me[req.method](model, params, req, res);
+      // and call the appropriate method
+      me[req.method](table, params, req, res);
     });
+     });
+      
+      
+      
   }
 
   // CREATE
@@ -67,7 +67,13 @@ module.exports = class REST2 {
 
   // READ
   GET(table, params, req, res) {
+    var me  = this;
+    res.json("hej");
+    
+    
 
+
+  
     // pick a mongoose query function and parameters for it
     // var me = this,
     //     func = params.modelID ? 'findById' : 'find', // om där finns använd findById annars använda find
