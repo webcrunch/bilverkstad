@@ -53,7 +53,7 @@ module.exports = class Server {
 
     new g.classes.REST2(this.app);
    
-    new g.classes.Holiday(this.app);
+
 
     // create an endpoint ("*")
     var me = this;

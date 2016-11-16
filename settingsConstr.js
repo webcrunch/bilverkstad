@@ -13,7 +13,7 @@ module.exports = function() {
         'REST',
         'REST2',
         'SQL',
-        'Holiday',
+
         'Login',
         'DummyGenerator',
         'MyQuery'
@@ -42,9 +42,7 @@ module.exports = function() {
     REST2 : {
       route : '/sql/:table/:tablelID?'
     }, 
-    Holiday:{
-      route: '/rest/holiday/:block?'
-    },
+  
     Login: {
       route: '/rest/login'
     },
