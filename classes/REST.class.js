@@ -60,7 +60,7 @@ module.exports = class REST {
   // READ
   GET(model, params, req, res) {
 
-    if (req.params.model == 'repairsCar' && params.modelID != "active") { // Show all cars
+    if (req.params.model == 'repairsCar' && params.modelID != "active") { // Show all cars or an specific
       var me = this,
           func = params.modelID ? 'findById' : 'find',
           q = params.modelID ? params.modelID : {};
@@ -98,7 +98,7 @@ module.exports = class REST {
           myObj.damages = items.damages;
           var timeLeft = 0;
           items.damages.forEach(function(y){
-            if (y.status != "avslutad" && y.hours != undefined) {
+            if (y.status != "avslutad") {
               timeLeft += y.hours;
             }
           });

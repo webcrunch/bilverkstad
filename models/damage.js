@@ -22,4 +22,8 @@ Schema.post('find', function(docs, next) {
   populatePosts(docs, 'spareParts employees', next);
 });
 
+Schema.post('findOne', function(docs, next) {
+  populatePosts(docs, 'spareParts employees', next);
+});
+
 module.exports = m.mongoose.model("damage", Schema);
