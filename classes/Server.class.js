@@ -47,7 +47,7 @@ module.exports = class Server {
     // Start Login api
     new g.classes.Login(this.app);
 
-    //new g.classes.MyQuery(this.app);
+    new g.classes.MyQuery(this.app);
 
     new g.classes.REST(this.app);   
 

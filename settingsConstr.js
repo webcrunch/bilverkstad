@@ -52,7 +52,7 @@ module.exports = function() {
       route: '/rest/generate/:model'
     },
     MyQuery : {
-      route : '/rest/:model/:modelID?'
+      route : '/rest/queries/:model/:modelID?'
     }
   };
 };

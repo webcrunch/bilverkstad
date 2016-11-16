@@ -1,5 +1,4 @@
 var s = g.settings;
-var populatePosts = require('./../population/mongoPop').populatePosts;
 
 module.exports = class MyQuery {
   constructor(express) {
@@ -59,7 +58,9 @@ module.exports = class MyQuery {
         		var myObj2 = {};
         		myObj2.description = y.description;
         		myObj2.hours = y.hours + " timmar";
-        		timeLeft += y.hours;
+            if (y.status != "avslutad") {
+              timeLeft += y.hours;
+            }
         		myObj2.status = y.status;
         		y.employees.forEach(function(z){
         			myEmployees.push(z.fName + " " + z.lName);     			
