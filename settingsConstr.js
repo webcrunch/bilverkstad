@@ -15,7 +15,8 @@ module.exports = function() {
         'SQL',
         'Holiday',
         'Login',
-        'DummyGenerator'
+        'DummyGenerator',
+        'MyQuery'
       ]
     },
     Server: {
@@ -31,7 +32,7 @@ module.exports = function() {
     },
     SQL:{
       host: "127.0.0.1",
-      user : "root",
+      user: "root",
       database: "bilverkstadDB",
       password: ""
     },
@@ -40,15 +41,18 @@ module.exports = function() {
     },
     REST2 : {
       route : '/sql/:table/:tablelID?'
-    },  
+    }, 
     Holiday:{
       route: '/rest/holiday/:block?'
-    },  
+    },
     Login: {
       route: '/rest/login'
     },
     DummyGenerator: {
       route: '/rest/generate/:model'
+    },
+    MyQuery : {
+      route : '/rest/:model/:modelID?'
     }
   };
 };

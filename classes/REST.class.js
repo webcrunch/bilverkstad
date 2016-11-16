@@ -45,7 +45,7 @@ module.exports = class REST {
     if (!req.session.loggedIn){
       this.error({error: 'Login needed!'}, res); return;
     }
-    else
+    else{
       var me = this,
           toSave = new model(params); // new model instance with data
 
@@ -54,6 +54,7 @@ module.exports = class REST {
         if (err) { me.error(err, res); return; }
         res.json(result); // respond with result
       });
+    }  
   }
 
   // READ
@@ -69,6 +70,7 @@ module.exports = class REST {
       if (err) { me.error(err, res); return; }
       res.json(result); // respond with result
     });
+
   }
 
   // UPDATE
@@ -78,12 +80,13 @@ module.exports = class REST {
     }
     else if (!params.modelID) { this.error({error: 'Missing ID!'}, res); return; }
 
-    else
+    else{
       var me = this;
       model.findByIdAndUpdate(params.modelID, params, {new: true}, function (err, result) {
         if (err) { me.error(err, res); return; }
         res.json(result); // respond with result
       });
+    }  
   }
 
   // DELETE
@@ -93,12 +96,13 @@ module.exports = class REST {
     }
     else if (!params.modelID) { this.error({error: 'Missing ID!'}, res); return; }
 
-    else
+    else{
       var me = this;
       model.findByIdAndRemove(params.modelID, function(err, result) {
         if (err) { me.error(err, res); return; }
         res.json(true); // respond with result
       });
+    }  
   }
 
   error(err, res) {

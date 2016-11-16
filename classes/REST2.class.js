@@ -1,6 +1,6 @@
 var s = g.settings;
 
-module.exports = class REST {
+module.exports = class REST2 {
   constructor(express) {
     this.settings = s.REST2;
     this.SQL = new g.classes.SQL(); // DB connection & models
