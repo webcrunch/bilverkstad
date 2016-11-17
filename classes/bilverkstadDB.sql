@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Värd: localhost
--- Tid vid skapande: 17 nov 2016 kl 00:39
+-- Tid vid skapande: 17 nov 2016 kl 09:53
 -- Serverversion: 10.1.16-MariaDB
 -- PHP-version: 5.5.38
 
@@ -23,10 +23,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur `Customers`
+-- Tabellstruktur `customer`
 --
 
-CREATE TABLE `Customers` (
+CREATE TABLE `customer` (
   `SSN` int(7) NOT NULL,
   `fName` varchar(50) DEFAULT NULL,
   `lName` varchar(50) DEFAULT NULL,
@@ -35,10 +35,10 @@ CREATE TABLE `Customers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumpning av Data i tabell `Customers`
+-- Dumpning av Data i tabell `customer`
 --
 
-INSERT INTO `Customers` (`SSN`, `fName`, `lName`, `adress`, `email`) VALUES
+INSERT INTO `customer` (`SSN`, `fName`, `lName`, `adress`, `email`) VALUES
 (1, 'Mayra', 'Rivas', 'Nevisborg 20D', 'mrivas@bilverkstad.se'),
 (2, 'Jarl', 'Andersson', 'Storgatan 15', 'jandersson@bilverkstad.se'),
 (3, 'Martin', 'Vergara', 'Tenorgränd 18', 'mvergara@bilverkstad.se'),
@@ -53,39 +53,39 @@ INSERT INTO `Customers` (`SSN`, `fName`, `lName`, `adress`, `email`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur `Damages`
+-- Tabellstruktur `damage`
 --
 
-CREATE TABLE `Damages` (
+CREATE TABLE `damage` (
   `Id_damage` int(11) NOT NULL,
   `description` varchar(255) DEFAULT NULL,
   `partNumber` int(7) DEFAULT NULL,
   `SSN` int(7) DEFAULT NULL,
-  `hours` time(3) DEFAULT NULL,
+  `hours` float DEFAULT NULL,
   `status` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumpning av Data i tabell `Damages`
+-- Dumpning av Data i tabell `damage`
 --
 
-INSERT INTO `Damages` (`Id_damage`, `description`, `partNumber`, `SSN`, `hours`, `status`) VALUES
-(1, 'The window is broken', 1, 1, '00:00:04.000', 'Ongoing'),
-(2, 'My car doesnt start', NULL, 9, '00:00:03.000', 'upcoming'),
-(3, 'change tires and wheels', 2, 1, '00:00:02.000', 'upcoming'),
-(4, 'Car needs to paint', NULL, 3, '00:00:12.000', 'upcoming'),
-(5, 'Glue seal and fix', 3, 3, '00:00:05.000', 'upcoming'),
-(6, 'Alternator Problems', NULL, NULL, '00:00:05.000', 'ongoing'),
-(7, 'Radiator leak', NULL, 5, '00:00:05.000', 'ongoing'),
-(8, 'Oli Leal', NULL, NULL, '00:00:02.000', 'upcoming');
+INSERT INTO `damage` (`Id_damage`, `description`, `partNumber`, `SSN`, `hours`, `status`) VALUES
+(1, 'The window is broken', 1, 1, 4, 'Ongoing'),
+(2, 'My car doesnt start', NULL, 9, 3, 'Ended'),
+(3, 'change tires and wheels', 2, 1, 2, 'upcoming'),
+(4, 'Car needs to paint', NULL, 3, 12, 'Ended'),
+(5, 'Glue seal and fix', 3, 3, 5, 'upcoming'),
+(6, 'Alternator Problems', NULL, NULL, 5, 'ongoing'),
+(7, 'Radiator leak', NULL, 5, 5, 'ongoing'),
+(8, 'Oli Leal', NULL, NULL, 2, 'upcoming');
 
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur `Employees`
+-- Tabellstruktur `employee`
 --
 
-CREATE TABLE `Employees` (
+CREATE TABLE `employee` (
   `SSN` int(7) NOT NULL,
   `email` varchar(30) DEFAULT NULL,
   `pass` varchar(20) DEFAULT NULL,
@@ -97,10 +97,10 @@ CREATE TABLE `Employees` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumpning av Data i tabell `Employees`
+-- Dumpning av Data i tabell `employee`
 --
 
-INSERT INTO `Employees` (`SSN`, `email`, `pass`, `fName`, `lName`, `title`, `vacation_start`, `vacation_end`) VALUES
+INSERT INTO `employee` (`SSN`, `email`, `pass`, `fName`, `lName`, `title`, `vacation_start`, `vacation_end`) VALUES
 (1, 'cthompson0@vkontakte.ru', 'password', 'Catherine', 'Thompson', 'Mechanic', '2017-07-16', '2017-08-16'),
 (2, 'iandrews1@apache.org', '1password ', 'Irene', 'Andrews', 'Mechanic', '2017-03-13', '2017-04-13'),
 (3, 'ebutler2@w3.org', 'password', 'Eugene', 'Butler', 'Mechanic', '2017-09-13', '2017-10-13'),
@@ -115,10 +115,10 @@ INSERT INTO `Employees` (`SSN`, `email`, `pass`, `fName`, `lName`, `title`, `vac
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur `Reapir_cars`
+-- Tabellstruktur `repairsCar`
 --
 
-CREATE TABLE `Reapir_cars` (
+CREATE TABLE `repairsCar` (
   `reg_num` varchar(10) NOT NULL,
   `modellName` varchar(30) DEFAULT NULL,
   `SSN` int(7) DEFAULT NULL,
@@ -126,10 +126,10 @@ CREATE TABLE `Reapir_cars` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumpning av Data i tabell `Reapir_cars`
+-- Dumpning av Data i tabell `repairsCar`
 --
 
-INSERT INTO `Reapir_cars` (`reg_num`, `modellName`, `SSN`, `id_damage`) VALUES
+INSERT INTO `repairsCar` (`reg_num`, `modellName`, `SSN`, `id_damage`) VALUES
 ('ABC123', 'Volvo Robott', 2, 1),
 ('BLA678', 'Volvo 450', 4, 5),
 ('HIJ456', 'Volvo 530', 5, 7),
@@ -144,10 +144,10 @@ INSERT INTO `Reapir_cars` (`reg_num`, `modellName`, `SSN`, `id_damage`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur `SpareParts`
+-- Tabellstruktur `sparePart`
 --
 
-CREATE TABLE `SpareParts` (
+CREATE TABLE `sparePart` (
   `partNumber` int(7) NOT NULL,
   `name` varchar(50) DEFAULT NULL,
   `price` decimal(12,2) NOT NULL,
@@ -156,10 +156,10 @@ CREATE TABLE `SpareParts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumpning av Data i tabell `SpareParts`
+-- Dumpning av Data i tabell `sparePart`
 --
 
-INSERT INTO `SpareParts` (`partNumber`, `name`, `price`, `modellName`, `VAT`) VALUES
+INSERT INTO `sparePart` (`partNumber`, `name`, `price`, `modellName`, `VAT`) VALUES
 (1, 'Spare parts with Engine referens', '2500.00', 'Volvo V70', '312.00'),
 (2, 'Brake reference parts', '1000.00', 'Volvo 60', '150.00'),
 (3, 'Parts with reference of Direction', '1500.00', 'Volvo 300', '175.00');
@@ -169,37 +169,37 @@ INSERT INTO `SpareParts` (`partNumber`, `name`, `price`, `modellName`, `VAT`) VA
 --
 
 --
--- Index för tabell `Customers`
+-- Index för tabell `customer`
 --
-ALTER TABLE `Customers`
+ALTER TABLE `customer`
   ADD PRIMARY KEY (`SSN`);
 
 --
--- Index för tabell `Damages`
+-- Index för tabell `damage`
 --
-ALTER TABLE `Damages`
+ALTER TABLE `damage`
   ADD PRIMARY KEY (`Id_damage`),
   ADD KEY `partNumber` (`partNumber`),
   ADD KEY `SSN` (`SSN`);
 
 --
--- Index för tabell `Employees`
+-- Index för tabell `employee`
 --
-ALTER TABLE `Employees`
+ALTER TABLE `employee`
   ADD PRIMARY KEY (`SSN`);
 
 --
--- Index för tabell `Reapir_cars`
+-- Index för tabell `repairsCar`
 --
-ALTER TABLE `Reapir_cars`
+ALTER TABLE `repairsCar`
   ADD PRIMARY KEY (`reg_num`),
   ADD KEY `id_damage` (`id_damage`),
   ADD KEY `SSN` (`SSN`);
 
 --
--- Index för tabell `SpareParts`
+-- Index för tabell `sparePart`
 --
-ALTER TABLE `SpareParts`
+ALTER TABLE `sparePart`
   ADD PRIMARY KEY (`partNumber`);
 
 --
@@ -207,32 +207,32 @@ ALTER TABLE `SpareParts`
 --
 
 --
--- AUTO_INCREMENT för tabell `Customers`
+-- AUTO_INCREMENT för tabell `customer`
 --
-ALTER TABLE `Customers`
+ALTER TABLE `customer`
   MODIFY `SSN` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
--- AUTO_INCREMENT för tabell `Employees`
+-- AUTO_INCREMENT för tabell `employee`
 --
-ALTER TABLE `Employees`
+ALTER TABLE `employee`
   MODIFY `SSN` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- Restriktioner för dumpade tabeller
 --
 
 --
--- Restriktioner för tabell `Damages`
+-- Restriktioner för tabell `damage`
 --
-ALTER TABLE `Damages`
-  ADD CONSTRAINT `damages_ibfk_1` FOREIGN KEY (`partNumber`) REFERENCES `SpareParts` (`partNumber`),
-  ADD CONSTRAINT `damages_ibfk_2` FOREIGN KEY (`SSN`) REFERENCES `Employees` (`SSN`);
+ALTER TABLE `damage`
+  ADD CONSTRAINT `damage_ibfk_1` FOREIGN KEY (`partNumber`) REFERENCES `SpareParts` (`partNumber`),
+  ADD CONSTRAINT `damage_ibfk_2` FOREIGN KEY (`SSN`) REFERENCES `Employees` (`SSN`);
 
 --
--- Restriktioner för tabell `Reapir_cars`
+-- Restriktioner för tabell `repairsCar`
 --
-ALTER TABLE `Reapir_cars`
-  ADD CONSTRAINT `reapir_cars_ibfk_1` FOREIGN KEY (`id_damage`) REFERENCES `Damages` (`Id_damage`),
-  ADD CONSTRAINT `reapir_cars_ibfk_2` FOREIGN KEY (`SSN`) REFERENCES `Customers` (`SSN`);
+ALTER TABLE `repairsCar`
+  ADD CONSTRAINT `repairscar_ibfk_1` FOREIGN KEY (`id_damage`) REFERENCES `damage` (`Id_damage`),
+  ADD CONSTRAINT `repairscar_ibfk_2` FOREIGN KEY (`SSN`) REFERENCES `customer` (`SSN`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
