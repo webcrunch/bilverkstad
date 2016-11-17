@@ -2,7 +2,7 @@
 
 Skoluppgift i grupp med fokus på backend.
 
-Projekt medlemmar
+Projekt medlemmar :+1: :metal: 
 
 Jarl
 Patricio
@@ -45,6 +45,6 @@ mongoDB: "rest/repairsCar"
 10) Vilka tider olika anställda har semester.
 mongoDB: "rest/employee/vacation"
 
-:+1: :metal: 
+
 
 Generellt (mongoDB): Det går att se ett specifikt element på alla routes om man inkluderar mongos id efter modulnamnet.
