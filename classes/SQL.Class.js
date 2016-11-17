@@ -44,14 +44,18 @@ module.exports = class SQL {
 		});
 	}
 
-	GETSPECEFIC(){
-		this.connection.query('SELECT * FROM ' + table   ,(err, data) =>{});	
+	GETSPECEFIC(table,id,cb){
+		this.connection.query('SELECT * FROM ' + table + 'WHERE SSN =' + id   ,(err, data) =>{});	
 	}
 
-	INSERT(tableName, query,cb){
-		this.connection.query('INSERT INTO "' + tableName + ' " SET ?' + query ,(err, data) =>{
-
+	INSERT(tableName,data,cb){
+		console.log(tableName);
+		console.log(data);//' + tableName + '
+		this.connection.query('INSERT INTO customer  SET  ?' , data ,(err, data) =>{
+			if(err){cb(err);}
+			cb(true);
 		});
+		
 	}
 
 	DELETE(query,cb){

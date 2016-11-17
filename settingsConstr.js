@@ -38,7 +38,7 @@ module.exports = function() {
       route : '/rest/:model/:modelID?'
     },
     REST2 : {
-      route : '/sql/:table/:tablelID?'
+      route : '/sql/:table/:tableID?'
     },  
     Login: {
       route: '/rest/login'

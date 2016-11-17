@@ -6,6 +6,7 @@ module.exports = class REST2 {
      this.SQL = new g.classes.SQL(); // DB connection & models
      this.app = express;
     this.router();
+    console.log(this.settings);
   }
 
   // setup standard CRUD for route
@@ -13,13 +14,14 @@ module.exports = class REST2 {
     var me = this;
     this.app.all(this.settings.route, function(req, res) {
      
+
       // var table = me.SQL.getTable(req.params.table); // dont need to but we could check if there is an table in SQL with that name 
       me.SQL.getTable(req.params.table, (response, error)=>{
         // do we have a 404?
-        var table = response;
-      console.log(table, "table console");
-      console.log(req.method);
-      if (!me[req.method] || !table) {
+        var resis = response;
+      
+      
+      if (!me[req.method] || !resis) {
        res.sendStatus(404);
         res.end();
         return;
@@ -28,19 +30,10 @@ module.exports = class REST2 {
       // // how to check if not logged in
       // if (!req.session.loggedIn) { /*...*/ }
 
-      // combine any data sent in the request body with
-      // any data sent in the request URL
       
-      var params = req.body || {};
-      
-      params.table = req.params.table;
-      
-    //   if (req.params.modelID) {
-    //     params.modelID = req.params.modelID;
-    //   }
-
-      // and call the appropriate method
-      me[req.method](table, params, req, res);
+    
+    
+      me[req.method](req.params.table,req.params.tableID, req.body, req, res);
     });
      });
       
@@ -49,13 +42,22 @@ module.exports = class REST2 {
   }
 
   // CREATE
-  POST(table, params, req, res) {
-    
+  POST(table,id, data, req, res) {
+    console.log(table,id,data);
+    var me  = this;
     // if (!req.session.loggedIn){
     //   this.error({error: 'Login needed!'}, res); return;
     // }
     // else
-         
+      me.SQL.INSERT(table,data,(response, error)=>{
+      // if(error){res.Status(404);res.json("fel");}
+      // res.json(response);
+      console.log(error);
+      console.log(response);
+      res.end();
+    });  
+    // console.log(table, "table22", params, "params");
+    // res.end();
   }
 
   // READ
