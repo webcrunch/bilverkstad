@@ -49,49 +49,24 @@ module.exports = class REST2 {
   }
 
   // CREATE
-  POST(model, params, req, res) {
+  POST(table, params, req, res) {
     
-    if (!req.session.loggedIn){
-      this.error({error: 'Login needed!'}, res); return;
-    }
-    else
-      var me = this,
-          toSave = new model(params); // new model instance with data
-
-      // write data to DB
-      toSave.save(function(err, result) {
-        if (err) { me.error(err, res); return; }
-        res.json(result); // respond with result
-      });
+    // if (!req.session.loggedIn){
+    //   this.error({error: 'Login needed!'}, res); return;
+    // }
+    // else
+         
   }
 
   // READ
   GET(table, params, req, res) {
     var me  = this;
 
-     me.SQL.getTable(req.params.table, (response, error)=>{
+     me.SQL.GET(req.params.table, (response, error)=>{
       if(error){res.sendStatus(400)}
         res.json(response);
 
       });
-
-    
-    
-
-
-  
-    // pick a mongoose query function and parameters for it
-    // var me = this,
-    //     func = params.modelID ? 'findById' : 'find', // om där finns använd findById annars använda find
-    //     q = params.modelID ? params.modelID : {}; // om där finns använd modelID annars använd tom obj
-
-    // call the query function (find || findById)
-    // model[func](q, function(err, result) {
-    //   if (err) { me.error(err, res); return; }
-    //   res.json(result); // respond with result
-    // });
-
-
   }
 
   // UPDATE
