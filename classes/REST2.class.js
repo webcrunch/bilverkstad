@@ -68,7 +68,13 @@ module.exports = class REST2 {
   // READ
   GET(table, params, req, res) {
     var me  = this;
-    res.json("hej");
+
+     me.SQL.getTable(req.params.table, (response, error)=>{
+      if(err){res.sendStatus(400)}
+        res.json(response);
+
+      });
+
     
     
 

@@ -37,20 +37,29 @@ module.exports = class SQL {
 
 	}
 
-	GET(query, cb){
-		this.connection.query('SHOW TABLES LIKE "' + table + '"'  ,(err, data) =>{}
+	GET(table, cb){
+		this.connection.query('SELECT * FROM ' + table   ,(err, data) =>{
+			if(err){cb(err);}
+			cb(data);
+		});
 	}
 
-	INSERT(query,cb){
-		this.connection.query('SHOW TABLES LIKE "' + table + '"'  ,(err, data) =>{}
+	GETSPECEFIC(){
+		this.connection.query('SELECT * FROM ' + table   ,(err, data) =>{});	
+	}
+
+	INSERT(tableName, query,cb){
+		this.connection.query('INSERT INTO "' + tableName + ' " SET ?' + query ,(err, data) =>{
+
+		});
 	}
 
 	DELETE(query,cb){
-		this.connection.query('SHOW TABLES LIKE "' + table + '"'  ,(err, data) =>{}
+		this.connection.query('SHOW TABLES LIKE "' + table + '"'  ,(err, data) =>{});
 	}
 
 	UPDATE(query,cb){
-		this.connection.query('SHOW TABLES LIKE "' + table + '"'  ,(err, data) =>{}
+		this.connection.query('SHOW TABLES LIKE "' + table + '"'  ,(err, data) =>{});
 	}
 
 	
