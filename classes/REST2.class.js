@@ -70,7 +70,7 @@ module.exports = class REST2 {
     var me  = this;
 
      me.SQL.getTable(req.params.table, (response, error)=>{
-      if(err){res.sendStatus(400)}
+      if(error){res.sendStatus(400)}
         res.json(response);
 
       });
