@@ -37,23 +37,32 @@ module.exports = class SQL {
 
 	}
 
-	GET(table, cb){
-		this.connection.query('SELECT * FROM ' + table   ,(err, data) =>{
-			if(err){cb(err);}
-			cb(data);
-		});
+	GET(table,id, cb){
+		console.log("table", table, "id", id);
+		if(id){
+
+			this.connection.query("SELECT * FROM ?? WHERE SSN =?" , [table,id]  ,(err, data) =>{
+				if(err){cb(err);return;}
+				cb(data);
+			});
+		}
+		else{
+
+			this.connection.query('SELECT * FROM ??', table  ,(err, data) =>{
+				if(err){cb(err);return;}
+				cb(data);
+			});
+		}
 	}
 
-	GETSPECEFIC(table,id,cb){
-		this.connection.query('SELECT * FROM ' + table + 'WHERE SSN =' + id   ,(err, data) =>{});	
-	}
+
 
 	INSERT(tableName,data,cb){
 		console.log(tableName);
 		console.log(data);//' + tableName + '
 		this.connection.query('INSERT INTO customer  SET  ?' , data ,(err, data) =>{
 			if(err){cb(err);}
-			cb(true);
+			cb(data);
 		});
 		
 	}

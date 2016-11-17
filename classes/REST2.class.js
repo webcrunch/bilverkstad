@@ -6,7 +6,7 @@ module.exports = class REST2 {
      this.SQL = new g.classes.SQL(); // DB connection & models
      this.app = express;
     this.router();
-    console.log(this.settings);
+    
   }
 
   // setup standard CRUD for route
@@ -31,7 +31,7 @@ module.exports = class REST2 {
       // if (!req.session.loggedIn) { /*...*/ }
 
       
-    
+      
     
       me[req.method](req.params.table,req.params.tableID, req.body, req, res);
     });
@@ -43,7 +43,7 @@ module.exports = class REST2 {
 
   // CREATE
   POST(table,id, data, req, res) {
-    console.log(table,id,data);
+  
     var me  = this;
     // if (!req.session.loggedIn){
     //   this.error({error: 'Login needed!'}, res); return;
@@ -61,44 +61,43 @@ module.exports = class REST2 {
   }
 
   // READ
-  GET(table, params, req, res) {
-    var me  = this;
+  GET(table,id, data, req, res) {
+      var me  = this;
+     
+    
+        me.SQL.GET(table,id, (response, error)=>{
+        if(error){res.sendStatus(400);return;}
+          res.json(response);
 
-     me.SQL.GET(req.params.table, (response, error)=>{
-      if(error){res.sendStatus(400)}
-        res.json(response);
+        });
+      
+      
+    }
 
-      });
-  }
+  
 
   // UPDATE
-  PUT(model, params, req, res) {
-    if (!req.session.loggedIn){
-      this.error({error: 'Login needed!'}, res); return;
-    }
-    else if (!params.modelID) { this.error({error: 'Missing ID!'}, res); return; }
+  PUT(table,id, data, req, res) {
+    // if (!req.session.loggedIn){
+    //   this.error({error: 'Login needed!'}, res); return;
+    // }
+    // else if (!params.modelID) { this.error({error: 'Missing ID!'}, res); return; }
 
-    else
-      var me = this;
-      model.findByIdAndUpdate(params.modelID, params, {new: true}, function (err, result) {
-        if (err) { me.error(err, res); return; }
-        res.json(result); // respond with result
-      });
+    // else
+    var me = this;
   }
 
   // DELETE
-  DELETE(model, params, req, res) {
-    if (!req.session.loggedIn){
-      this.error({error: 'Login needed!'}, res); return;
-    }
-    else if (!params.modelID) { this.error({error: 'Missing ID!'}, res); return; }
+  DELETE(table,id, data, req, res) {
+    // if (!req.session.loggedIn){
+    //   this.error({error: 'Login needed!'}, res); return;
+    // }
+    // else if (!params.modelID) { this.error({error: 'Missing ID!'}, res); return; }
 
-    else
+    // else
       var me = this;
-      model.findByIdAndRemove(params.modelID, function(err, result) {
-        if (err) { me.error(err, res); return; }
-        res.json(true); // respond with result
-      });
+
+
   }
 
   error(err, res) {
