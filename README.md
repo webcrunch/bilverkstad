@@ -10,6 +10,9 @@ Martin
 Mayra
 Faj
 
+Innan man startar appen behöver man importera mongoDB data till sin egen mongoDB
+Data befinner sig i mappen "bilverkstadDB (mongodb)"
+
 Scenario
 
 En bilverkstad vill kunna lagra (skapa, läsa, ändra och ta bort) information om följande i
@@ -44,7 +47,6 @@ mongoDB: "rest/repairsCar"
 
 10) Vilka tider olika anställda har semester.
 mongoDB: "rest/employee/vacation"
-
 
 
 Generellt (mongoDB): Det går att se ett specifikt element på alla routes om man inkluderar mongos id efter modulnamnet.
