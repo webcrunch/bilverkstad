@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Värd: localhost
--- Tid vid skapande: 17 nov 2016 kl 09:53
+-- Tid vid skapande: 18 nov 2016 kl 13:12
 -- Serverversion: 10.1.16-MariaDB
 -- PHP-version: 5.5.38
 
@@ -39,16 +39,20 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`SSN`, `fName`, `lName`, `adress`, `email`) VALUES
-(1, 'Mayra', 'Rivas', 'Nevisborg 20D', 'mrivas@bilverkstad.se'),
-(2, 'Jarl', 'Andersson', 'Storgatan 15', 'jandersson@bilverkstad.se'),
-(3, 'Martin', 'Vergara', 'Tenorgränd 18', 'mvergara@bilverkstad.se'),
-(4, 'Patricio', 'Smith', 'Hörnet 22', 'psmith@bilverkstad.se'),
-(5, 'Faj', 'Gravestam', 'Bilgatan 50', 'fgravestam@bilverkstad.se'),
-(6, 'Hugo', 'Trump', 'Ön 4', 'htrump@bilverkstad.se'),
-(7, 'Anna', 'Kvarg', 'Soltergatan 11', 'akvarg@bilverkstad.se'),
-(8, 'Pernilla', ' Clinton', 'Nörragrännsväg 36', 'pclinton@bilverkstad.se'),
-(9, 'Åke', 'Johansson', 'Per Albin 20', 'ajohansson@bilverkstad.se'),
-(10, 'Donald', 'Trump', 'Snurrigatan 3', 'strump@bilverkstad.se');
+(1, 'Mayra', 'Rivas', 'Nevisborg 20D', 'mrivas@test.se'),
+(2, 'Jarl', 'Andersson', 'Storgatan 15', 'jandersson@test.se'),
+(3, 'Martin', 'Vergara', 'Tenorgränd 18', 'mvergara@test.se'),
+(4, 'Bertha', 'Malin', 'Klocklarevägen 10', 'bgastob@test.se'),
+(5, 'Faj', 'Gravestam', 'Bilgatan 50', 'fgravestam@test.se'),
+(6, 'Hugo', 'Trump', 'Ön 4', 'htrump@test.se'),
+(7, 'Anna', 'Kvarg', 'Soltergatan 11', 'akvarg@test.se'),
+(8, 'Pernilla', ' Clinton', 'Nörragrännsväg 36', 'pclinton@test.se'),
+(9, 'Åke', 'Johansson', 'Per Albin 20', 'ajohansson@test.se'),
+(10, 'Donald', 'Trump', 'Snurrigatan 3', 'strump@test.se'),
+(11, 'Bill', 'Clinto', 'Snurrigatan 3', 'bclinton@test.se'),
+(12, 'Bylli Joel', 'Gaston', 'Klocklarevägen 3', 'bgastob@bilverkstad.se'),
+(13, 'Eduardo', 'Rivas', 'Nevisborg 20D', 'mrivas@test.se'),
+(14, 'Eduardo', 'Tapia', 'Nevisborg 20D', 'mrivas@test.se');
 
 -- --------------------------------------------------------
 
@@ -101,16 +105,17 @@ CREATE TABLE `employee` (
 --
 
 INSERT INTO `employee` (`SSN`, `email`, `pass`, `fName`, `lName`, `title`, `vacation_start`, `vacation_end`) VALUES
-(1, 'cthompson0@vkontakte.ru', 'password', 'Catherine', 'Thompson', 'Mechanic', '2017-07-16', '2017-08-16'),
-(2, 'iandrews1@apache.org', '1password ', 'Irene', 'Andrews', 'Mechanic', '2017-03-13', '2017-04-13'),
-(3, 'ebutler2@w3.org', 'password', 'Eugene', 'Butler', 'Mechanic', '2017-09-13', '2017-10-13'),
-(4, 'jbradley3@newsvine.com', 'password', 'Jose', 'Bradley', 'Mechanic', '2017-10-11', '2017-11-11'),
-(5, 'wcox4@harvard.edu', 'password', 'Wayne', 'Cox', 'Mechanic', '2017-01-08', '2017-02-08'),
-(6, 'whowell5@nydailynews.com', 'password', 'Wanda', 'Howell', 'Mechanic', '2017-06-28', '2017-07-13'),
-(7, 'jmorrison6@phpbb.com', 'password', 'Jimmy', 'Morrison', 'Mechanic', '2017-06-01', '2017-06-28'),
-(8, 'cfrazier7@mozilla.com', 'password', 'Craig', 'Frazier', 'Mechanic', '2017-04-07', '2017-04-21'),
-(9, 'cmeyer8@bloomberg.com', 'password', 'Cheryl', 'Meyer', 'Mechanic', '2017-04-29', '2017-05-15'),
-(10, 'ctorres9@psu.edu', 'password', 'Chris', 'Torres', 'Mechanic', '2017-10-15', '2017-11-15');
+(1, 'cthompson0@bilverkstad.se', 'password', 'Catherine', 'Thompson', 'Mechanic', '2017-07-16', '2017-08-16'),
+(2, 'iandrew@bilverkstad.se', '1password ', 'Irene', 'Andrews', 'Mechanic', '2017-03-13', '2017-04-13'),
+(3, 'ebutler2@bilverkstad.se', 'password', 'Eugene', 'Butler', 'Mechanic', '2017-09-13', '2017-10-13'),
+(4, 'jbradley3@bilverkstad.se', 'password', 'Jose', 'Bradley', 'Mechanic', '2017-10-11', '2017-11-11'),
+(5, 'wcox4@bilverkstad.se', 'password', 'Wayne', 'Cox', 'Mechanic', '2017-01-08', '2017-02-08'),
+(6, 'whowell5@bilverkstad.se', 'password', 'Wanda', 'Howell', 'Mechanic', '2017-06-28', '2017-07-13'),
+(7, 'jmorrison6@bilverkstad.se', 'password', 'Jimmy', 'Morrison', 'Mechanic', '2017-06-01', '2017-06-28'),
+(8, 'cfrazier7@bilverkstad.se', 'password', 'Craig', 'Frazier', 'Mechanic', '2017-04-07', '2017-04-21'),
+(9, 'cmeyer8@bilverkstad.se', 'password', 'Cheryl', 'Meyer', 'Mechanic', '2017-04-29', '2017-05-15'),
+(10, 'ctorres9@bilverkstad.se', 'password', 'Chris', 'Torres', 'Mechanic', '2017-10-15', '2017-11-15'),
+(11, 'iandrews1@bilverkstad.se', 'password1 ', 'Ian', 'Solano', 'Boss', '2017-03-15', '2017-04-25');
 
 -- --------------------------------------------------------
 
@@ -210,12 +215,12 @@ ALTER TABLE `sparePart`
 -- AUTO_INCREMENT för tabell `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `SSN` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `SSN` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT för tabell `employee`
 --
 ALTER TABLE `employee`
-  MODIFY `SSN` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `SSN` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- Restriktioner för dumpade tabeller
 --
@@ -231,8 +236,8 @@ ALTER TABLE `damage`
 -- Restriktioner för tabell `repairsCar`
 --
 ALTER TABLE `repairsCar`
-  ADD CONSTRAINT `repairscar_ibfk_1` FOREIGN KEY (`id_damage`) REFERENCES `damage` (`Id_damage`),
-  ADD CONSTRAINT `repairscar_ibfk_2` FOREIGN KEY (`SSN`) REFERENCES `customer` (`SSN`);
+  ADD CONSTRAINT `repairscar_ibfk_1` FOREIGN KEY (`id_damage`) REFERENCES `Damages` (`Id_damage`),
+  ADD CONSTRAINT `repairscar_ibfk_2` FOREIGN KEY (`SSN`) REFERENCES `Customers` (`SSN`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
