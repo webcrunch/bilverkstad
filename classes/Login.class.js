@@ -47,8 +47,9 @@ module.exports = class Login {
       if (result) {
         // create a session variable, if we found a result
         req.session.loggedIn = result._id;
+        req.session.xUsername = result.fName;
       }
-
+      res.header('X-Client-id', req.sessionID).header('X-username', req.session.xUsername);
      // just answer something, without giving anything away
       res.json(true);
     });
@@ -58,6 +59,7 @@ module.exports = class Login {
   GET(req, res) {
     // we don't need the database here!
     // we have a session variable
+    res.header('X-Client-id', req.sessionID).header('X-username', req.session.xUsername);
     res.json(!!req.session.loggedIn);
   }
 
