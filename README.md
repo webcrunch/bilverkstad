@@ -10,7 +10,7 @@ Martin
 Mayra
 Faj
 
-Innan man startar appen behöver man importera mongoDB data till sin egen mongoDB
+Innan man startar appen behöver man importera mongoDB data till sin egen mongoDB.
 Data befinner sig i mappen "bilverkstadDB (mongodb)"
 
 Scenario
