@@ -63,8 +63,6 @@ module.exports = class SQL {
     }
   }
 
-
-
   INSERT(tableName, data, cb) {
     console.log(tableName);
     console.log(data); //' + tableName + '
@@ -103,9 +101,28 @@ module.exports = class SQL {
     
   }
 
-DELETE(query, cb) {
-    this.connection.query('SHOW TABLES LIKE  "' + table + '"', (err, data) => {});
-  }
+DELETE(table, id, cb) {
+    console.log("table", table, "id", id);
+    if (id) {
 
+      this.connection.query("DELETE FROM ?? WHERE SSN =?", [table, id], (err, data) => {
+        if (err) {
+          console.log(err);
+          cb(err);
+          return;
+        }
+        cb(data);
+      });
+    } else {
+
+      this.connection.query('DELETE FROM ??', table, (err, data) => {
+        if (err) {
+          cb(err);
+          return;
+        }
+        cb(data);
+      });
+    }
+  }
 
 };

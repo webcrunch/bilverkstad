@@ -98,13 +98,20 @@ module.exports = class REST2 {
   }
 
   // DELETE
-  DELETE(table, id, data, req, res) {
-    // if (!req.session.loggedIn){
-    //   this.error({error: 'Login needed!'}, res); return;
-    // }
-    // else if (!params.modelID) { this.error({error: 'Missing ID!'}, res); return; }
-    // else
+DELETE(table, id, data, req, res) {
     var me = this;
+
+
+    me.SQL.DELETE(table, id, (response, error) => {
+      if (error) {
+        res.status(400);
+        res.json(error);
+        return;
+      }
+      res.json(response);
+
+    });
+
   }
 
   error(err, res) {
