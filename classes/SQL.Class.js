@@ -68,7 +68,7 @@ module.exports = class SQL {
   INSERT(tableName, data, cb) {
     console.log(tableName);
     console.log(data); //' + tableName + '
-    this.connection.query('INSERT INTO customer  SET  ?', data, (err, data) => {
+    this.connection.query('INSERT INTO `' + tableName + '`  SET  ?', data, (err, data) => {
       if (err) {
         cb(err);
       }
@@ -95,15 +95,12 @@ module.exports = class SQL {
 
     paramVals.push(condition);
 
-    console.log("SQL",sql1,"paramVals",paramVals);
+    //console.log("SQL",sql1,"paramVals",paramVals);
     this.connection.query(sql1, paramVals, (err, data) => {
-      console.log("HERE RESULT",err,data);
+      //console.log("HERE RESULT",err,data);
       cb(data,err);
     });
-    //this.connection.query('UPDATE `' + table + '` SET ? =  WHERE SSN = ' + condition + '', data ,(err, data) =>{
-    //	if(err){cb(err);}
-    //	cb(data);
-
+    
   }
 
 DELETE(query, cb) {

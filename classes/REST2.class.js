@@ -50,7 +50,12 @@ module.exports = class REST2 {
       // res.json(response);
       console.log(error);
       console.log(response);
-      res.end();
+      if (error) {
+        res.status(400);
+        res.json(error);
+        return;
+      }
+      res.json(response);
     });
     // console.log(table, "table22", params, "params");
     // res.end();
@@ -78,8 +83,8 @@ module.exports = class REST2 {
   PUT(table, condition, data, req, res) {
     var me = this;
     //console.log('hello');
-    console.log(condition);
-    console.log(data);
+    //console.log(condition);
+    //console.log(data);
 
     me.SQL.UPDATE(table, data, condition, (response, error) => {
       if (error) {
