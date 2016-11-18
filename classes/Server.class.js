@@ -33,7 +33,7 @@ module.exports = class Server {
     }));
 
     // compress all files using gzip
-    this.app.use(m.compression());
+    this.app.use(m.compression({threshold: 0}));
 
     // parse all request cookies
     this.app.use(m.cookieparser());

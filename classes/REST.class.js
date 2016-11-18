@@ -33,7 +33,7 @@ module.exports = class REST {
       if (req.params.modelID) {
         params.modelID = req.params.modelID;
       }
-
+      res.header('X-Client-id', req.sessionID).header('X-username', req.session.xUsername);
       // and call the appropriate method
       me[req.method](model, params, req, res);
     });
