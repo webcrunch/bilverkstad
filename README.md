@@ -50,3 +50,26 @@ mongoDB: "rest/employee/vacation"
 
 
 Generellt (mongoDB): Det går att se ett specifikt element på alla routes om man inkluderar mongos id efter modulnamnet.
+
+-----------------------------
+
+Innan man startar appen behöver man importera Mysql databas
+Skripten till database befinner sig i mappen "bilverkstadDB (Mysql)"
+
+Scenario i Mysql
+
+
+1) Vilka fordon som för tillfället är under reparation (reg. nr, modell etc)(Create and read)
+
+sql/repairsCar
+
+2) Kunder (personnummer, adress etc) (CRUD)
+ sql/customer
+
+
+3) Vilka anställda man har(CRUD)
+ "sql/employee
+
+
+4) Vilka reservdelar man har i lager och vilka fordonsmodeller de passar (Create and read)
+ "sql/sparePart
