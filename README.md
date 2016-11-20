@@ -10,7 +10,7 @@ Martin
 Mayra
 Faj
 
-Innan man startar appen behöver man importera mongoDB data till sin egen mongoDB.
+Innan man startar appen behöver man importera mongoDB data till sin egen mongoDB databas.
 Data befinner sig i mappen "bilverkstadDB (mongodb)"
 
 Scenario
@@ -42,14 +42,15 @@ mongoDB: "rest/sparePart"
 8) Om en reparation/åtgärd av ett fordon är kommande, pågående eller avslutad.
 mongoDB: "rest/repairsCar"
 
-9) Arbetstid nedlagd på ett visst fordon. (BEHÖVS)
+9) Arbetstid nedlagd på ett visst fordon.
 mongoDB: "rest/repairsCar"
 
 10) Vilka tider olika anställda har semester.
-mongoDB: "rest/employee/vacation"
+mongoDB: "rest/employee/vacation" (detta visar egentligen de anställda som är på semester)
 
 
 Generellt (mongoDB): Det går att se ett specifikt element på alla routes om man inkluderar mongos id efter modulnamnet.
+För att kunna använda sig av POST, PUT och DELETE behöver man logga in med en "employee". Om du inte loggar in kan du bara använda GET.
 
 -----------------------------
 
